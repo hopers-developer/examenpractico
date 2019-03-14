@@ -1,0 +1,163 @@
+swagger: '2.0'
+info:
+  version: 1.0.3
+  title: GPSHopers API
+  description: API para el desarrollo del GPS de Hopers
+  contact:
+    name: Adrian Garay
+    email: adrian.garay@hopers.com.mx
+    url: 'https://github.com/AdGARAY'
+  license:
+    name: MIT
+    url: 'http://opensource.org/licenses/MIT'
+host: 'localhost:3000'
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /user:
+    get:
+      tags:
+        - user
+      summary: Get the list of users
+      operationId: GetUsers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: limit
+          description: Limit of list
+          required: false
+          type: number
+        - in: query
+          name: offset
+          description: Offset of list
+          required: false
+          type: number
+      responses:
+        '200':
+          description: User List
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - user
+      summary: Create user
+      operationId: PostUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: User object
+          required: false
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: User inserted
+          schema:
+            type: boolean
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags:
+        - user
+      summary: Update user
+      operationId: PatchUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: User object
+          required: false
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: User updated
+          schema:
+            type: boolean
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /user/{id}:
+    get:
+      tags:
+        - user
+      summary: Get user by id
+      operationId: GetUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: Id of user
+          required: true
+          type: number
+      responses:
+        '200':
+          description: User List
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - user
+      summary: Delete user
+      operationId: DeleteUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: Id of user
+          required: true
+          type: number
+      responses:
+        '200':
+          description: User List
+          schema:
+            type: boolean
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: Not found
+      schema:
+        $ref: '#/definitions/Message'
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+      eval:
+        type: number
+  Message:
+    type: object
+    properties:
+      message:
+        type: string

@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Servidor para la realizacion del examen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Garay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "sqlite3": "^4.0.6",
+    "swagger-ui-express": "^4.0.2",
+    "yamljs": "^0.3.0"
+  }
+}
