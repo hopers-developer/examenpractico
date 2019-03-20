@@ -1,4 +1,4 @@
-# Examenpractico
+# Examen practico
 
 Elaboración de una app web cliente en Angular CLI 7 usando components, injectables y el Router de angular.
 Ejercicio:
